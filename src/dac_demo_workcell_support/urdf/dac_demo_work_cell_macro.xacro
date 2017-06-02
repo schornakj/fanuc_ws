@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="dac_demo_work_cell" params="prefix">
+
+    <link name="${prefix}dac_demo_work_cell_base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://dac_demo_workcell_support/meshes/dac_workcell.STL"/>
+        </geometry>
+        <material name="grey">
+          <color rgba="0.5 0.5 0.5 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://dac_demo_workcell_support/meshes/dac_workcell.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="${prefix}dac_demo_work_cell_walls">
+      <collision>
+        <geometry>
+          <mesh filename="package://dac_demo_workcell_support/meshes/dac_workcell_walls.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}work_cell_base_to_walls" type="fixed">
+      <parent link="${prefix}dac_demo_work_cell_base_link"/>
+      <child link="${prefix}dac_demo_work_cell_walls"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+  </xacro:macro>
+</robot>

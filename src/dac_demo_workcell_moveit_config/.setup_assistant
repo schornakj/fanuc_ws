@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dac_demo_workcell_support
+    relative_path: urdf/workcell.xacro
+  SRDF:
+    relative_path: config/dac_demo_work_cell.srdf
+  CONFIG:
+    author_name: jschornak
+    author_email: jschornak@swri.org
+    generated_timestamp: 1496410237

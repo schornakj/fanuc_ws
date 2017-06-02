@@ -1,0 +1,5 @@
+<launch>
+ <node name="dac_demo_workcell_node" pkg="dac_demo_workcell_core" type="dac_demo_workcell_node" output="screen">
+   <param name="base_frame" value="world"/>
+ </node>
+</launch>

@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<robot name="dac_demo_work_cell" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find fanuc_lrmate200ic_support)/urdf/lrmate200ic_macro.xacro"/>
+  <xacro:include filename="$(find dac_demo_workcell_support)/urdf/dac_demo_work_cell_macro.xacro" />
+
+  <link name="world"/>
+  <xacro:fanuc_lrmate200ic prefix=""/>
+  <xacro:dac_demo_work_cell prefix=""/>
+
+  <link name="dac_demo_work_cell_end_effector">
+    <visual>
+      <geometry>
+        <mesh filename="package://dac_demo_workcell_support/meshes/dac_end_effector.STL"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://dac_demo_workcell_support/meshes/dac_end_effector.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name = "world_to_work_cell" type="fixed">
+    <parent link="world"/>
+    <child link="dac_demo_work_cell_base_link"/>
+    <origin xyz="0 0 0" rpy="3.14159 0 0"/>
+  </joint>    
+
+  <joint name="work_cell_to_robot" type="fixed">
+    <parent link="dac_demo_work_cell_base_link"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <joint name="robot_to_end_effector" type="fixed">
+    <parent link="tool0"/>
+    <child link="dac_demo_work_cell_end_effector"/>
+    <origin xyz="0.1016 -0.127 0" rpy="0 -1.5708 0"/>
+  </joint>
+
+</robot>
